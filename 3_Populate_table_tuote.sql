@@ -1,18 +1,17 @@
-/* Populoidaan tuote taulu. 
-Koska nörtit ovat laiskoja, tuotteille lasketaan satunnainen luontihetkeä ilmoittava aikaleima.
-Normaalistihan tuotteen luonnissa käytettäisiin aikaleiman 
-*/
-
 /* Valitaan tietokanta */
+
 USE puoti;
 
 /* Määritellään kentät joihin tieto "oksennetaan" */
+
 INSERT INTO
     `tuote` (`inStock`,`nimi`,`kuvaus`,`ean`,`hintaalvo`,`yksikko`,`alvpros`,`creaStamp`)
 
 /* Itse lisättävät tiedot. 
-HUOM! Realistisemman tuntuista kantaa varten inStock ja creaStamp arvot luodaan "satunnaisesti"
-Normaalisti tuotteita syntyisi joko yksittäisiä puodin pitäjän toimesta tai ne viedäisiin ajotiedostona pelkän varastosaldon mukaan.  */
+HUOM! Luodaksemme realistisemman kannan tehtävää varten, inStock ja creaStamp saavat arvonsa satunnaisesti.
+Normaalisti tuotteita syntyisi joko yksittäisiä puodin pitäjän toimesta tai ne viedäisiin ajotiedostona pelkän varastosaldon mukaan.
+Luontipäivämäärä siis riippuisi siitä koska tieto on syötetty, eikä sitä syötettäisi manuaalisesti kuten tässä.*/
+
 VALUES
 (FLOOR(RAND()*(100-0+1))+0,'Housut Blåkläder','Koko C52 Musta/Harmaa','7330509763919','69.80','KPL','24',CURRENT_TIMESTAMP()),
 (FLOOR(RAND()*(100-0+1))+0,'KOMPAKTIKATKAISIJA HAGER','P630 LSI 4N 250A 110kA','3250613198596','1915.00','KPL','24',FROM_UNIXTIME(UNIX_TIMESTAMP('2021-04-30 14:53:27') + FLOOR(0 + (RAND() * 63072000)))),
